@@ -187,6 +187,7 @@ public class Main {
             }
         }
         System.out.println(lastBoard.sumUnmarked()*lastNum);
+        sc.close();
     }
 
     public static void main (String [] args){
