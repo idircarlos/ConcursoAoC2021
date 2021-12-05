@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public static final int MAX_SIZE = 10;
+    public static final int MAX_SIZE = 1000;
 
     private static int [] fixedParse(String [] parse){
         int [] res = new int [parse.length];
@@ -28,22 +28,36 @@ public class Main {
         Scanner sc = new Scanner (System.in);
         int [][] map = new int [MAX_SIZE][MAX_SIZE];
         int coords [];
+        int xs [] = new int [2];
+        int ys [] = new int [2];
+        int counter = 0;
         while (sc.hasNextLine()){
             String [] splited = sc.nextLine().split("->|,");
             coords = fixedParse(splited);
-            if (coords[0] == coords[2]){
-                for (int p = coords[1]; p < coords[3]; p++){
-                    map[coords[0]][p] = map[coords[0]][p] + 1;
+            xs[0] = coords[0];
+            xs[1] = coords[2];
+            ys[0] = coords[1];
+            ys[1] = coords[3];
+            if (xs[0] == xs[1]){
+                for (int y = Math.min(ys[0], ys[1]); y <= Math.max(ys[0], ys[1]); y++){     
+                    map[y][xs[0]] = map[y][xs[0]] + 1;
                 }
             }
-            else if (coords[1] == coords[3]){
-                for (int p = coords[0]; p < coords[2]; p++){
-                    map[coords[1]][p] = map[coords[1]][p] + 1;
+            else if (ys[0] == ys[1]){
+                for (int x = Math.min(xs[0], xs[1]); x <=  Math.max(xs[0], xs[1]); x++){
+                    map[ys[0]][x] = map[ys[0]][x] + 1;
                 }
             }
-            printMap(map);
         }
-        
+        for (int i = 0; i < map.length; i++){
+            for (int j = 0; j < map.length; j++){
+                if(map[i][j] >= 2){
+                    counter++;
+                }
+            }
+        }
+        System.out.println(counter);
+        sc.close();
     }
 
     public static void second(){
