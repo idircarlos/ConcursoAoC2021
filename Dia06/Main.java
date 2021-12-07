@@ -13,17 +13,12 @@ public class Main {
         return list;
     }
 
-    public static int first(List<Integer> lanterfishes){
-        return firstAux(lanterfishes);
-    }
-
-    public static int firstAux(List<Integer> lanterfishes){
+    public static void first(List<Integer> lanterfishes){
         int ret = lanterfishes.size();
         for(int i = 0; i < lanterfishes.size(); i++){
             ret = ret + howManyChildsFrom(lanterfishes.get(i), 0, 0, 0);
         }
         System.out.println(ret);
-        return 0;
     }
 
     public static int howManyChildsFrom(Integer initialState, Integer actualDay, Integer total, Integer id){
