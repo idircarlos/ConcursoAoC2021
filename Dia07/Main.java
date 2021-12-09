@@ -31,7 +31,7 @@ public class Main {
         long sum = 0;
         for (int i = 0; i < horizontal.size(); i++){
             for (int j = 0; j < horizontal.size(); j++){
-                sum = sum + sumFactorial(Math.abs(horizontal.get(j) - horizontal.get(i)));
+                sum = sum + sumFactorial(Math.abs(horizontal.get(j) - i));
             }
             if (min == -1) min = sum;
             else if (sum < min) min = sum;
@@ -53,6 +53,7 @@ public class Main {
         List<Integer> list = toIntegerList(sc.nextLine().split(","));
         //first(list);
         second(list);
+        sc.close();
 
 
     }
